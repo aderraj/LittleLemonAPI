@@ -19,7 +19,7 @@ class Booking(models.Model):
 
 class MenuItem(models.Model):
     name = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(default="No description available")
     price = models.DecimalField(max_digits=6, decimal_places=2)
     inventory = models.IntegerField()
 
