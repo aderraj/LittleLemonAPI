@@ -2,6 +2,27 @@
 
 A Django REST API for the Little Lemon restaurant, providing endpoints for menu management, table bookings, and user authentication.
 
+## ⚡ Quick Start (Recommended)
+
+**Want to get up and running fast? Use our automation scripts!**
+
+1. **Setup MySQL database** (see detailed instructions below)
+2. **Run the setup script:**
+   ```bash
+   cd littleLemon
+   pipenv install
+   ./setup.sh
+   ```
+3. **Test your API:**
+   ```bash
+   python manage.py runserver  # Start server
+   python test_api.py          # Test in another terminal
+   ```
+
+**That's it! Your API is ready.** 🍋✨
+
+---
+
 ## 🚀 Features
 
 - **Menu Management**: Create, read, update, and delete menu items
@@ -24,69 +45,64 @@ git clone https://github.com/aderraj/LittleLemonAPI.git
 cd LittleLemonAPI/littleLemon
 ```
 
-### 2. Install Dependencies with Pipenv
-```bash
-pipenv install
-pipenv shell
-```
+### 2. MySQL Database Configuration
 
-### 3. MySQL Database Configuration
+You need to set up a local MySQL database with the exact credentials specified in `settings.py`:
 
-You need to manually set up a local MySQL database with the exact credentials specified in `settings.py`:
-
-#### Install MySQL Server
-Make sure MySQL Server is installed and running on your system.
-
-#### Create Database and User
-Connect to MySQL as root and run the following commands:
+**Create Database and User:**
 ```sql
+-- Connect to MySQL as root
+mysql -u root -p
+
+-- Run these commands:
 CREATE DATABASE littleLemon;
 CREATE USER 'littleAdmin'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON littleLemon.* TO 'littleAdmin'@'localhost';
 FLUSH PRIVILEGES;
+EXIT;
 ```
 
-**Important**: These credentials must match exactly what's in `littleLemon/settings.py`:
-- **Database Name**: `littleLemon`
-- **Username**: `littleAdmin`
+**Required credentials** (must match `settings.py`):
+- **Database**: `littleLemon`
+- **User**: `littleAdmin` 
 - **Password**: `password`
-- **Host**: `127.0.0.1` (localhost)
+- **Host**: `127.0.0.1`
 - **Port**: `3306`
 
-### 4. Run Database Migrations
+### 3. Automated Setup
+
+**Use the setup script for everything else:**
+
 ```bash
-python manage.py makemigrations
-python manage.py migrate
+pipenv install
+./setup.sh
 ```
 
-### 5. Create Superuser
-You can either create a superuser manually or use the automated command:
+The setup script automatically handles:
+- ✅ Dependencies installation
+- ✅ Database migrations
+- ✅ Superuser creation (admin/adminpass123)
+- ✅ Sample data loading
+- ✅ Environment verification
 
-**Option A: Manual Creation**
-```bash
-python manage.py createsuperuser
-```
+### 🧪 Test Your API
 
-**Option B: Use Default Credentials**
-```bash
-python manage.py create_default_superuser
-```
-This creates an admin user with:
-- Username: `admin`
-- Email: `admin@littlelemon.com`
-- Password: `adminpass123`
+After setup, verify everything works with the included test script:
 
-### 6. Load Sample Menu Data (Optional)
 ```bash
-python manage.py loaddata fixtures/sample_menu.json
-```
-
-### 7. Run the Development Server
-```bash
+# Make sure your server is running first
 python manage.py runserver
+
+# In another terminal, run the API tests
+python test_api.py
 ```
 
-The API will be available at `http://127.0.0.1:8000/`
+The test script will automatically:
+- ✅ Test all API endpoints
+- ✅ Create a test user account
+- ✅ Test authentication
+- ✅ Verify booking functionality
+- ✅ Show you what's working
 
 ## 📚 API Documentation
 
@@ -183,8 +199,8 @@ littleLemon/
 ├── manage.py
 ├── Pipfile                     # pipenv dependencies
 ├── requirements.txt            # pip dependencies (generated from Pipfile)
-├── setup.sh                   # automated setup script
-├── test_api.py                # API testing script
+├── setup.sh                   # 🚀 AUTOMATED SETUP SCRIPT - Run this!
+├── test_api.py                # 🧪 API TESTING SCRIPT - Test your API!
 ├── db.sqlite3                 # SQLite database (backup)
 ├── fixtures/
 │   └── sample_menu.json       # sample menu data
@@ -228,13 +244,37 @@ FLUSH PRIVILEGES;
 
 ## 🧪 Testing
 
-### Run Tests
+### Automated API Testing
+Use the included test script to verify all endpoints:
+
 ```bash
-python manage.py test
+# Start the development server
+python manage.py runserver
+
+# In another terminal, run the automated tests
+python test_api.py
 ```
 
-### Test API Endpoints
-Use the provided test credentials or create your own user account to test authenticated endpoints.
+**What the test script does:**
+- ✅ Tests menu API (GET /restaurant/menu/)
+- ✅ Tests user registration (POST /auth/users/)
+- ✅ Tests authentication (POST /auth/token/login/)
+- ✅ Tests booking API with authentication
+- ✅ Provides detailed success/error feedback
+
+### Manual Testing
+```bash
+# Run Django unit tests
+python manage.py test
+
+# Test with curl commands (see examples below)
+curl http://127.0.0.1:8000/restaurant/menu/
+```
+
+### Test Credentials
+Use these for manual testing:
+- **Superuser**: admin / adminpass123
+- **Test User**: Created automatically by test_api.py
 
 ## 🚀 Deployment
 
