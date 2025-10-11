@@ -21,6 +21,24 @@ A Django REST API for the Little Lemon restaurant, providing endpoints for menu 
 
 **That's it! Your API is ready.** 🍋✨
 
+### 🔧 Troubleshooting
+
+**If admin login doesn't work:**
+1. Try the manual superuser creation:
+   ```bash
+   pipenv shell
+   python manage.py createsuperuser
+   ```
+2. Or run the standalone script:
+   ```bash
+   pipenv run python create_superuser.py
+   ```
+
+**Default credentials:**
+- Username: `admin`
+- Password: `adminpass123`
+- Email: `admin@littlelemon.com`
+
 ---
 
 ## 🚀 Features
@@ -84,6 +102,13 @@ The setup script automatically handles:
 - ✅ Superuser creation (admin/adminpass123)
 - ✅ Sample data loading
 - ✅ Environment verification
+
+**If the automatic superuser creation fails, you can create one manually:**
+```bash
+pipenv shell
+python manage.py createsuperuser
+# Use: admin / admin@littlelemon.com / adminpass123
+```
 
 ### 🧪 Test Your API
 

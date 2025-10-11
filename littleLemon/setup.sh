@@ -40,7 +40,7 @@ pipenv run python manage.py migrate
 
 # Create superuser
 echo "👤 Creating default superuser..."
-pipenv run python manage.py create_default_superuser
+pipenv run python create_superuser.py
 
 # Load sample data
 echo "� Loading sample menu data..."
