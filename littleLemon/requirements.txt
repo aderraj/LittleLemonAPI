@@ -1,0 +1,4 @@
+Django>=5.0.0
+djangorestframework>=3.14.0
+mysqlclient>=2.1.0
+djoser>=2.2.0

@@ -1,0 +1,52 @@
+[
+  {
+    "model": "restaurant.menu",
+    "pk": 1,
+    "fields": {
+      "title": "Greek Salad",
+      "description": "Fresh vegetables with feta cheese and olive oil",
+      "price": "12.99",
+      "inventory": 25
+    }
+  },
+  {
+    "model": "restaurant.menu",
+    "pk": 2,
+    "fields": {
+      "title": "Bruschetta",
+      "description": "Grilled bread topped with tomatoes and basil",
+      "price": "8.99",
+      "inventory": 30
+    }
+  },
+  {
+    "model": "restaurant.menu",
+    "pk": 3,
+    "fields": {
+      "title": "Lemon Dessert",
+      "description": "Traditional lemon cake with cream",
+      "price": "6.99",
+      "inventory": 20
+    }
+  },
+  {
+    "model": "restaurant.menu",
+    "pk": 4,
+    "fields": {
+      "title": "Grilled Fish",
+      "description": "Fresh fish grilled with herbs and lemon",
+      "price": "22.99",
+      "inventory": 15
+    }
+  },
+  {
+    "model": "restaurant.menu",
+    "pk": 5,
+    "fields": {
+      "title": "Pasta Primavera",
+      "description": "Fresh pasta with seasonal vegetables",
+      "price": "16.99",
+      "inventory": 18
+    }
+  }
+]

@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     "djoser",
 ]
 
-DJOSER = {"USSER_ID_FIELD": "username"}
+DJOSER = {"USER_ID_FIELD": "username"}
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
